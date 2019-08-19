@@ -1,0 +1,7 @@
+{
+	"hibernateShowSQL": false,
+	"hibernateFormatSQL": false,
+	"hibernateHbm2DllAuto": "none",
+	"generateSwaggerDocs": false,
+	"environmentId": "PROD"
+}

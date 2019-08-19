@@ -1,0 +1,6 @@
+{
+	"hibernateDialect": "org.hibernate.dialect.PostgreSQLDialect",
+	"dataSource": "java:comp/env/jdbc/AutenticadorDS",
+	"pacoteEntidade": "br.eti.alandrade21.autorizador.entidade",
+	"pacoteDao": "br.eti.alandrade21.autorizador.dao"
+}
