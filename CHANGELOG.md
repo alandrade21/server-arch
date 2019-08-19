@@ -1,4 +1,8 @@
-# 0.0.1
+# Changelog
+
+Todas as alterações dignas de nota neste projeto serão documentadas neste arquivo.
+
+## 0.0.1
 
 * Creation of a CryptoUtil class, to create a MD5 digest of a string.
 * Creation of a RequestUtil class, to extract the IP of a request and to extract the OAuth2 client login from the Authorization header.
