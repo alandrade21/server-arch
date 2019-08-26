@@ -19,10 +19,19 @@
 
 package br.eti.alandrade21.arch.serverArch.props;
 
+import java.io.IOException;
+import java.util.Map;
+
 import org.springframework.boot.context.properties.ConfigurationProperties;
 import org.springframework.context.annotation.PropertySource;
+import org.springframework.core.env.MapPropertySource;
+import org.springframework.core.io.support.EncodedResource;
+import org.springframework.core.io.support.PropertySourceFactory;
+import org.springframework.stereotype.Component;
+import com.fasterxml.jackson.databind.ObjectMapper;
 
 import lombok.Getter;
+import lombok.Setter;
 
 /**
  * Loads server application properties from a Json file namede <code>applicationProperties.json</code> loaded from the classpath of
@@ -33,16 +42,30 @@ import lombok.Getter;
  * @author andre
  * @since 0.0.1, 16 de ago de 2019
  */
-@PropertySource(value = "classpath:applicationProperties.json", encoding="UTF-8")
+@Component
+@PropertySource(value="classpath:/applicationProperties.json", encoding="UTF-8",  
+				factory=ApplicationPropertiesInternal.JsonPropertySourceFactory.class)
 @ConfigurationProperties
 @Getter
+@Setter
 public class ApplicationPropertiesInternal {
 
 	private String hibernateDialect;
 	
 	private String dataSource;
 	
-	private String pacoteEntidade;
+	private String entityPackage;
 	
-	private String pacoteDao;	
+	private String daoPackage;
+	
+	public static class JsonPropertySourceFactory implements PropertySourceFactory{
+
+		@SuppressWarnings({ "rawtypes", "unchecked" })
+		@Override
+	    public org.springframework.core.env.PropertySource<?> createPropertySource(String name, EncodedResource resource) throws IOException {
+			
+	        Map readValue = new ObjectMapper().readValue(resource.getInputStream(), Map.class);
+	        return new MapPropertySource("ApplicationPropertiesInternal", readValue);
+	    }
+	}
 }
