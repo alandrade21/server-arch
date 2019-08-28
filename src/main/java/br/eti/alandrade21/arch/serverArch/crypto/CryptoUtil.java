@@ -16,7 +16,7 @@
  * You should have received a copy of the GNU General Public License
  * along with "server-arch".  If not, see <https://www.gnu.org/licenses/>.
  */
-package br.eti.alandrade21.arch.serverArch.cripto;
+package br.eti.alandrade21.arch.serverArch.crypto;
 
 import java.io.UnsupportedEncodingException;
 import java.math.BigInteger;
